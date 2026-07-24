@@ -44,25 +44,39 @@
             transition: transform 0.12s ease-out;
         }
 
+        /* Movimiento flotante muy suave y sutil */
+        @keyframes subtleFloat {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-subtle-float {
+            animation: subtleFloat 6s ease-in-out infinite;
+        }
+
         /* Estilos Glassmorphism */
         .glass-card {
             background: rgba(15, 23, 42, 0.75);
             backdrop-filter: blur(16px);
             border: 1px solid rgba(56, 189, 248, 0.15);
             transform-style: preserve-3d;
-            transition: border-color 0.3s, box-shadow 0.3s, transform 0.2s ease-out;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s ease-out;
         }
         .glass-card:hover {
             border-color: rgba(56, 189, 248, 0.45);
             box-shadow: 0 0 25px rgba(56, 189, 248, 0.18);
         }
 
-        /* Estilo Minimalista para Sobre Mí */
+        /* Tarjeta Sobre Mí con inclinación y flotado ultrasuave */
         .about-card {
             background: rgba(13, 19, 36, 0.85);
             backdrop-filter: blur(20px);
             border: 1px solid rgba(56, 189, 248, 0.2);
-            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease-out, border-color 0.3s, box-shadow 0.3s;
+        }
+        .about-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            box-shadow: 0 0 30px rgba(56, 189, 248, 0.15);
         }
 
         .glass-modal {
@@ -92,7 +106,7 @@
     <!-- Canvas de Partículas de Fondo -->
     <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0"></canvas>
 
-    <!-- Navegación Flotante Estilizada -->
+    <!-- Navegación Flotante -->
     <nav class="fixed top-0 w-full z-40 glass-card border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-6 py-3.5 flex justify-between items-center">
             
@@ -135,9 +149,9 @@
             </p>
 
             <div class="flex flex-wrap justify-center gap-3 text-xs font-medium text-slate-300 pt-2">
-                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm"><i class="fas fa-graduation-cap text-cyan-400 mr-2"></i>Pearson HND in Computing[cite: 4]</span>
-                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm"><i class="fas fa-certificate text-cyan-400 mr-2"></i>Inglés C1 (Univ. Canterbury)[cite: 4]</span>
-                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm"><i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i>Getafe / Madrid[cite: 4]</span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm"><i class="fas fa-graduation-cap text-cyan-400 mr-2"></i>Pearson HND in Computing</span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm"><i class="fas fa-certificate text-cyan-400 mr-2"></i>Inglés C1 (Univ. Canterbury)</span>
+                <span class="px-3.5 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 shadow-sm"><i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i>Getafe / Madrid</span>
             </div>
 
             <div class="flex flex-wrap justify-center gap-4 pt-4">
@@ -149,13 +163,13 @@
         </div>
     </section>
 
-    <!-- SECCIÓN SOBRE MÍ -->
+    <!-- SECCIÓN SOBRE MÍ (PRESENTACIÓN PERSONAS Y WEB) -->
     <section id="about" class="py-20 max-w-7xl mx-auto px-6 relative z-10">
         
         <!-- Header de Sección -->
         <div class="text-center space-y-2 mb-12 reveal">
             <span class="text-xs font-bold uppercase tracking-widest text-cyan-400 bg-cyan-950/60 border border-cyan-500/30 px-3.5 py-1 rounded-full inline-block">
-                <i class="fas fa-user-circle mr-1.5"></i> Perfil Personal
+                <i class="fas fa-user-circle mr-1.5"></i> Presentación Personal
             </span>
             <h2 class="text-3xl md:text-4xl font-extrabold text-slate-100 tracking-tight">
                 Sobre <span class="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Mí</span>
@@ -163,25 +177,25 @@
             <div class="w-12 h-1 bg-gradient-to-r from-cyan-400 to-blue-600 mx-auto rounded-full"></div>
         </div>
 
-        <div class="about-card p-8 md:p-12 rounded-2xl reveal">
+        <div class="about-card p-8 md:p-12 rounded-2xl reveal tilt-subtle animate-subtle-float">
             <div class="grid md:grid-cols-12 gap-8 items-start">
                 
                 <div class="md:col-span-4 text-center md:text-left space-y-4">
-                    <div class="w-36 h-36 md:w-44 md:h-44 mx-auto md:mx-0 rounded-2xl bg-gradient-to-tr from-cyan-500/30 to-blue-600/30 p-1 border border-cyan-500/40 shadow-lg shadow-cyan-500/10 transition duration-300 hover:border-cyan-400">
+                    <div class="w-36 h-36 md:w-44 md:h-44 mx-auto md:mx-0 rounded-2xl bg-gradient-to-tr from-cyan-500/30 to-blue-600/30 p-1 border border-cyan-500/40 shadow-lg shadow-cyan-500/10 transition duration-500 hover:border-cyan-400">
                         <div class="w-full h-full bg-slate-950 rounded-2xl flex items-center justify-center">
                             <i class="fas fa-user-shield text-6xl text-cyan-400"></i>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-2xl font-bold text-slate-100">Adrián Calderón Garrido</h3>
-                        <p class="text-sm font-medium text-cyan-400 mt-1">25 años | Getafe (Madrid)[cite: 4]</p>
+                        <p class="text-sm font-medium text-cyan-400 mt-1">25 años | Getafe (Madrid)</p>
                         <p class="text-xs text-slate-400 mt-0.5">Nacionalidad Española</p>
                     </div>
 
                     <div class="pt-4 border-t border-slate-800 space-y-2.5 text-xs text-slate-300">
-                        <div class="flex items-center gap-2.5"><i class="fas fa-envelope text-cyan-400"></i> adriancalderongarrido@gmail.com[cite: 4]</div>
+                        <div class="flex items-center gap-2.5"><i class="fas fa-envelope text-cyan-400"></i> adriancalderongarrido@gmail.com</div>
                         <div class="flex items-center gap-2.5"><i class="fab fa-linkedin text-cyan-400"></i> adriancalderon-cyber</div>
-                        <div class="flex items-center gap-2.5"><i class="fas fa-language text-cyan-400"></i> Inglés C1 (Univ. Canterbury)[cite: 4]</div>
+                        <div class="flex items-center gap-2.5"><i class="fas fa-language text-cyan-400"></i> Inglés C1 (Univ. Canterbury)</div>
                     </div>
                 </div>
                 
@@ -189,45 +203,60 @@
                     
                     <div class="flex items-center gap-3 border-b border-slate-800/80 pb-3">
                         <div class="w-1.5 h-6 bg-gradient-to-b from-cyan-400 to-blue-600 rounded-full"></div>
-                        <h3 class="text-xl font-bold text-slate-100">Visión & Enfoque Profesional</h3>
+                        <h3 class="text-xl font-bold text-slate-100">¿Quién soy y qué vas a encontrar aquí?</h3>
                     </div>
                     
                     <p>
-                        Soy estudiante universitario del grado en <span class="text-cyan-400 font-semibold">Ciberseguridad e Inteligencia Digital en MSMK</span> y del <span class="text-cyan-400 font-semibold">Pearson Higher National Diploma in Computing (Cyber Security)</span>[cite: 4]. Mi perfil combina una sólida vocación técnica hacia el <span class="text-slate-100 font-semibold">hacking ético, auditoría defensiva y análisis de vulnerabilidades</span>[cite: 4] con una base previa en entornos 3D e interactivos[cite: 4].
+                        ¡Hola! Te doy la bienvenida a mi sitio web personal. Soy <span class="text-slate-100 font-bold">Adrián Calderón Garrido</span>, tengo <span class="text-cyan-400 font-semibold">25 años</span> y vivo en Getafe, Madrid. He diseñado este espacio a modo de portfolio profesional e interactivo para presentarme de manera transparente, mostrar mis conocimientos y compartir los trabajos prácticos que he ido desarrollando en el ámbito de la ciberseguridad y el mundo tecnológico.
                     </p>
 
                     <p>
-                        A nivel práctico, entreno constantemente resolviendo máquinas virtuales en plataformas como <span class="text-cyan-300 font-semibold">TryHackMe</span> y <span class="text-cyan-300 font-semibold">HackTheBox</span>[cite: 4]. Utilizo habitualmente distribuciones como <span class="text-slate-100 font-medium">Kali Linux</span> para la ejecución de auditorías, empleando herramientas como <span class="text-slate-100 font-medium">Nmap</span> para reconocimiento, <span class="text-slate-100 font-medium">Wireshark</span> para inspección de paquetes, <span class="text-slate-100 font-medium">Burp Suite</span> para análisis web básico, <span class="text-slate-100 font-medium">Hydra</span> para fuerza bruta, <span class="text-slate-100 font-medium">Netcat</span> para conexiones de red y <span class="text-slate-100 font-medium">Autopsy</span> para investigaciones forenses[cite: 4].
+                        Actualmente estudio la carrera de <span class="text-cyan-400 font-semibold">Cyber Security & Digital Intelligence en MSMK</span> junto al <span class="text-cyan-400 font-semibold">Pearson Higher National Diploma in Computing</span>. En esta web podrás explorar en detalle mis principales áreas de trabajo:
                     </p>
 
-                    <p>
-                        Mi objetivo profesional es aplicar de manera proactiva estos conocimientos en equipos de ciberseguridad (Red Team / Blue Team), aportando adaptabilidad, alta capacidad de aprendizaje y rigor analítico[cite: 4].
+                    <ul class="space-y-2 text-xs md:text-sm pl-2">
+                        <li class="flex items-start gap-2.5">
+                            <i class="fas fa-caret-right text-cyan-400 mt-1"></i>
+                            <span><strong class="text-slate-100">Proyectos Universitarios Documentados:</strong> Informes técnicos completos sobre Análisis Forense Digital (HFS+/macOS), Hardening de Redes y cortafuegos Cisco ASA por CLI, e Implantación de SGSI bajo la norma ISO/IEC 27001 y metodología MAGERIT v3.0.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fas fa-caret-right text-cyan-400 mt-1"></i>
+                            <span><strong class="text-slate-100">Laboratorios de Hacking Ético & Pentesting:</strong> Resolución constante de máquinas virtuales y retos ofensivos/defensivos en TryHackMe y HackTheBox usando Kali Linux, Nmap, Wireshark, Burp Suite, Hydra y Netcat.</span>
+                        </li>
+                        <li class="flex items-start gap-2.5">
+                            <i class="fas fa-caret-right text-cyan-400 mt-1"></i>
+                            <span><strong class="text-slate-100">Trayectoria Laboral & Background:</strong> Mi experiencia en entornos críticos en directo como Operador en Antena 3 (Atresmedia) y mi base técnica previa en animación 3D y desarrollo.</span>
+                        </li>
+                    </ul>
+
+                    <p class="pt-1 text-slate-300">
+                        Te invito a navegar por las distintas secciones e interactuar con las tarjetas de proyectos para consultar los resúmenes de cada caso de estudio.
                     </p>
 
                     <!-- Soft Skills -->
                     <div class="pt-2">
                         <div class="flex items-center gap-3 mb-3">
                             <div class="w-1.5 h-5 bg-cyan-400 rounded-full"></div>
-                            <h4 class="text-sm font-bold uppercase tracking-wider text-cyan-400">Competencias Clave (Soft Skills)[cite: 4]</h4>
+                            <h4 class="text-sm font-bold uppercase tracking-wider text-cyan-400">Competencias Clave (Soft Skills)</h4>
                         </div>
                         <div class="grid grid-cols-2 md:grid-cols-3 gap-2.5 text-xs">
                             <div class="p-2.5 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center gap-2">
-                                <i class="fas fa-bolt text-cyan-400"></i> Proactividad & Aprendizaje[cite: 4]
+                                <i class="fas fa-bolt text-cyan-400"></i> Proactividad & Aprendizaje
                             </div>
                             <div class="p-2.5 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center gap-2">
-                                <i class="fas fa-user-gear text-cyan-400"></i> Autonomía Operativa[cite: 4]
+                                <i class="fas fa-user-gear text-cyan-400"></i> Autonomía Operativa
                             </div>
                             <div class="p-2.5 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center gap-2">
-                                <i class="fas fa-brain text-cyan-400"></i> Resiliencia & Resolutividad[cite: 4]
+                                <i class="fas fa-brain text-cyan-400"></i> Resiliencia & Resolutividad
                             </div>
                             <div class="p-2.5 bg-slate-900/90 rounded-lg border border-slate-800 flex items-center gap-2">
-                                <i class="fas fa-comments text-cyan-400"></i> Comunicación Afectiva[cite: 4]
+                                <i class="fas fa-comments text-cyan-400"></i> Comunicación Afectiva
                             </div>
                             <div class="p-2.5 bg-slate-900/90 rounded-lg border border-slate-800 flex items-center gap-2">
-                                <i class="fas fa-users text-cyan-400"></i> Trabajo en Equipo / Liderazgo[cite: 4]
+                                <i class="fas fa-users text-cyan-400"></i> Trabajo en Equipo / Liderazgo
                             </div>
                             <div class="p-2.5 bg-slate-900/90 rounded-lg border border-slate-800 flex items-center gap-2">
-                                <i class="fas fa-arrows-rotate text-cyan-400"></i> Alta Adaptabilidad[cite: 4]
+                                <i class="fas fa-arrows-rotate text-cyan-400"></i> Alta Adaptabilidad
                             </div>
                         </div>
                     </div>
@@ -266,25 +295,25 @@
                     <div class="relative pl-6 border-l-2 border-cyan-500/50 space-y-1">
                         <span class="text-xs font-semibold text-cyan-400">Octubre 2024 — En curso</span>
                         <h4 class="font-bold text-slate-100 text-base">Cyber Security & Digital Intelligence</h4>
-                        <p class="text-xs font-semibold text-slate-400">MSMK University & Pearson Higher National Diploma (Level 5)[cite: 4]</p>
+                        <p class="text-xs font-semibold text-slate-400">MSMK University & Pearson Higher National Diploma (Level 5)</p>
                         <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                            Formación técnica enfocada en análisis forense digital, pentesting, diseño SGSI bajo ISO 27001, evaluación de riesgos MAGERIT v3.0, hardening de cortafuegos Cisco ASA, VPNs IPsec/SSL y gestión de bases de datos[cite: 1, 2, 3, 4].
+                            Formación técnica enfocada en análisis forense digital, pentesting, diseño SGSI bajo ISO 27001, evaluación de riesgos MAGERIT v3.0, hardening de cortafuegos Cisco ASA, VPNs IPsec/SSL y gestión de bases de datos.
                         </p>
                     </div>
 
                     <div class="relative pl-6 border-l-2 border-slate-700 space-y-1">
                         <span class="text-xs font-semibold text-slate-400">Septiembre 2021 — Junio 2023</span>
                         <h4 class="font-bold text-slate-100 text-base">Grado Superior: Animación 3D, Juegos y Entornos Interactivos</h4>
-                        <p class="text-xs font-semibold text-slate-400">Escuela CES Imagen y Sonido[cite: 4]</p>
+                        <p class="text-xs font-semibold text-slate-400">Escuela CES Imagen y Sonido</p>
                         <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                            Modelado 3D, desarrollo en motor Unity, programación orientada a objetos (C#) y diseño interactivo[cite: 4].
+                            Modelado 3D, desarrollo en motor Unity, programación orientada a objetos (C#) y diseño interactivo.
                         </p>
                     </div>
 
                     <div class="p-3.5 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between text-xs shadow-inner">
                         <div>
                             <span class="font-bold text-slate-100 block">Inglés C1 Acreditado</span>
-                            <span class="text-slate-400">Certificado Oficial por la Universidad de Canterbury[cite: 4]</span>
+                            <span class="text-slate-400">Certificado Oficial por la Universidad de Canterbury</span>
                         </div>
                         <i class="fas fa-award text-cyan-400 text-2xl"></i>
                     </div>
@@ -304,18 +333,18 @@
                     <div class="relative pl-6 border-l-2 border-cyan-500/50 space-y-1">
                         <span class="text-xs font-semibold text-cyan-400">2024 — Actualidad</span>
                         <h4 class="font-bold text-slate-100 text-base">Laboratorios de Ciberseguridad & Hacking Ético</h4>
-                        <p class="text-xs font-semibold text-slate-400">TryHackMe & HackTheBox (Proyectos Universitarios MSMK)[cite: 4]</p>
+                        <p class="text-xs font-semibold text-slate-400">TryHackMe & HackTheBox (Proyectos Universitarios MSMK)</p>
                         <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                            Investigación y explotación de vulnerabilidades en laboratorios prácticos. Reconocimiento de redes, análisis web, escalada de privilegios y forense sobre entornos Linux/Windows[cite: 4].
+                            Investigación y explotación de vulnerabilidades en laboratorios prácticos. Reconocimiento de redes, análisis web, escalada de privilegios y forense sobre entornos Linux/Windows.
                         </p>
                     </div>
 
                     <div class="relative pl-6 border-l-2 border-slate-700 space-y-1">
                         <span class="text-xs font-semibold text-slate-400">Agosto 2023 — Noviembre 2023</span>
                         <h4 class="font-bold text-slate-100 text-base">Operador de Multidispositivos</h4>
-                        <p class="text-xs font-semibold text-slate-400">Antena 3 (Atresmedia Televisión)[cite: 4]</p>
+                        <p class="text-xs font-semibold text-slate-400">Antena 3 (Atresmedia Televisión)</p>
                         <p class="text-xs text-slate-400 mt-2 leading-relaxed">
-                            Desarrollo y gestión técnica de elementos gráficos 3D en directo para emisión nacional. Control de posicionamiento, superposición y resolución de incidencias en tiempo real bajo máxima exigencia[cite: 4].
+                            Desarrollo y gestión técnica de elementos gráficos 3D en directo para emisión nacional. Control de posicionamiento, superposición y resolución de incidencias en tiempo real bajo máxima exigencia.
                         </p>
                     </div>
                 </div>
@@ -347,12 +376,12 @@
                     <h3 class="font-bold text-base">Ciberseguridad & Hacking Ético</h3>
                 </div>
                 <ul class="space-y-2 text-xs text-slate-300">
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Kali Linux:</strong> Entorno principal para pentesting[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Nmap:</strong> Reconocimiento y escaneo de puertos[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Wireshark:</strong> Captura y análisis de tráfico pcap[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Burp Suite:</strong> Interceptación web (Nivel Básico)[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Hydra / Netcat:</strong> Fuerza bruta y sockets de red[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Autopsy / FTK Imager:</strong> Análisis forense digital[cite: 1, 4]</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Kali Linux:</strong> Entorno principal para pentesting</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Nmap:</strong> Reconocimiento y escaneo de puertos</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Wireshark:</strong> Captura y análisis de tráfico pcap</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Burp Suite:</strong> Interceptación web (Nivel Básico)</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Hydra / Netcat:</strong> Fuerza bruta y sockets de red</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Autopsy / FTK Imager:</strong> Análisis forense digital</li>
                 </ul>
             </div>
 
@@ -363,12 +392,12 @@
                     <h3 class="font-bold text-base">Redes, Hardening & BBDD</h3>
                 </div>
                 <ul class="space-y-2 text-xs text-slate-300">
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Cisco ASA CLI:</strong> Hardening de cortafuegos[cite: 2]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Cisco Packet Tracer:</strong> Topología y enrutamiento[cite: 2, 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">VPN IPsec / SSL:</strong> Cifrado de túneles corporativos[cite: 2]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">ACLs / NAT / QoS:</strong> Filtrado y priorización de red[cite: 2]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">MySQL & Redis:</strong> Consultas y gestión de datos[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">ISO 27001 & MAGERIT v3.0:</strong> SGSI y gestión de riesgos[cite: 3]</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Cisco ASA CLI:</strong> Hardening de cortafuegos</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Cisco Packet Tracer:</strong> Topología y enrutamiento</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">VPN IPsec / SSL:</strong> Cifrado de túneles corporativos</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">ACLs / NAT / QoS:</strong> Filtrado y priorización de red</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">MySQL & Redis:</strong> Consultas y gestión de datos</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">ISO 27001 & MAGERIT v3.0:</strong> SGSI y gestión de riesgos</li>
                 </ul>
             </div>
 
@@ -379,12 +408,12 @@
                     <h3 class="font-bold text-base">Programación & Entorno 3D</h3>
                 </div>
                 <ul class="space-y-2 text-xs text-slate-300">
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Lenguajes:</strong> HTML5, CSS3, C#[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">IDE:</strong> VSCode, Visual Studio[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Motor 3D:</strong> Unity[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Autodesk:</strong> 3ds Max, Maya[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Adobe Suite:</strong> Photoshop, After Effects, Premiere[cite: 4]</li>
-                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Texturizado:</strong> Substance Painter[cite: 4]</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Lenguajes:</strong> HTML5, CSS3, C#</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">IDE:</strong> VSCode, Visual Studio</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Motor 3D:</strong> Unity</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Autodesk:</strong> 3ds Max, Maya</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Adobe Suite:</strong> Photoshop, After Effects, Premiere</li>
+                    <li class="flex items-center gap-2"><i class="fas fa-check text-cyan-400"></i> <strong class="text-slate-100">Texturizado:</strong> Substance Painter</li>
                 </ul>
             </div>
 
@@ -417,7 +446,7 @@
                     </div>
                     <h3 class="text-lg font-bold text-slate-100 mb-2">Caso Forense: National Gallery DC</h3>
                     <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Análisis pericial sobre imagen de disco macOS (.E01/.E02). Recuperación en .Trash, timeline en Autopsy y esteganografía en MP3[cite: 1].
+                        Análisis pericial sobre imagen de disco macOS (.E01/.E02). Recuperación en .Trash, timeline en Autopsy y esteganografía en MP3.
                     </p>
                     <div class="flex flex-wrap gap-1 mb-6">
                         <span class="text-[9px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">FTK Imager</span>
@@ -438,7 +467,7 @@
                     </div>
                     <h3 class="text-lg font-bold text-slate-100 mb-2">Hardening & VPN (Softet)</h3>
                     <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Red Sede-Sucursal unida por túnel VPN IPsec Site-to-Site. Configuración Cisco ASA por CLI, WebVPN SSL y priorización QoS[cite: 2].
+                        Red Sede-Sucursal unida por túnel VPN IPsec Site-to-Site. Configuración Cisco ASA por CLI, WebVPN SSL y priorización QoS.
                     </p>
                     <div class="flex flex-wrap gap-1 mb-6">
                         <span class="text-[9px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">Cisco ASA</span>
@@ -459,7 +488,7 @@
                     </div>
                     <h3 class="text-lg font-bold text-slate-100 mb-2">SGSI & MAGERIT (NeoBanco)</h3>
                     <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Diseño SGSI ISO/IEC 27001:2022 para banca Cloud-Native. Evaluación de riesgos MAGERIT v3.0, SoA y diagrama Kiviat[cite: 3].
+                        Diseño SGSI ISO/IEC 27001:2022 para banca Cloud-Native. Evaluación de riesgos MAGERIT v3.0, SoA y diagrama Kiviat.
                     </p>
                     <div class="flex flex-wrap gap-1 mb-6">
                         <span class="text-[9px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">ISO 27001</span>
@@ -480,7 +509,7 @@
                     </div>
                     <h3 class="text-lg font-bold text-slate-100 mb-2">TryHackMe & HackTheBox</h3>
                     <p class="text-slate-400 text-xs leading-relaxed mb-4">
-                        Resolución práctica de máquinas virtuales ofensivas y defensivas. Reconocimiento con Nmap, interceptación BurpSuite y conectividad Netcat[cite: 4].
+                        Resolución práctica de máquinas virtuales ofensivas y defensivas. Reconocimiento con Nmap, interceptación BurpSuite y conectividad Netcat.
                     </p>
                     <div class="flex flex-wrap gap-1 mb-6">
                         <span class="text-[9px] bg-slate-800 text-slate-300 px-2 py-0.5 rounded font-mono">Kali Linux</span>
@@ -509,20 +538,20 @@
             </div>
 
             <div class="space-y-4 text-xs md:text-sm text-slate-300">
-                <p><strong>Objeto de Análisis:</strong> Imagen bit-a-bit del disco duro MacBook Air (HFS+) en formato EnCase (.E01 / .E02)[cite: 1].</p>
+                <p><strong>Objeto de Análisis:</strong> Imagen bit-a-bit del disco duro MacBook Air (HFS+) en formato EnCase (.E01 / .E02).</p>
                 <div class="bg-slate-900/90 p-4 rounded-xl border border-slate-800 font-mono text-[11px] space-y-1">
                     <p class="text-cyan-400 font-bold mb-2">// Verificación Criptográfica de Integridad</p>
-                    <p>Hash MD5:  8e388fac32d4bcd7eb6d2f2cf95a73dc[cite: 1]</p>
-                    <p>Hash SHA1: 1bb836cf672c4efcf1b51f127cfde8f700959c3d[cite: 1]</p>
-                    <p>Tamaño Imagen: 5.65 GB (Verificado Correctamente)[cite: 1]</p>
+                    <p>Hash MD5:  8e388fac32d4bcd7eb6d2f2cf95a73dc</p>
+                    <p>Hash SHA1: 1bb836cf672c4efcf1b51f127cfde8f700959c3d</p>
+                    <p>Tamaño Imagen: 5.65 GB (Verificado Correctamente)</p>
                 </div>
 
                 <h4 class="font-bold text-slate-100 text-base border-b border-slate-800 pb-1 pt-2">Hallazgos Principales</h4>
                 <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Recuperación en Papelera (.Trash):</strong> Se hallaron los archivos eliminados `Stamp insurance 1 2.pdf` y `Stamp insurance 1.pdf.zip`, con datos clave del seguro[cite: 1].</li>
-                    <li><strong>Esteganografía en Audio:</strong> En la carpeta `Downloads` se analizó el archivo `Crazydave1.mp3` (4.35 MB), descubriendo instrucciones encubiertas para instalar máquinas virtuales (VirtualBox)[cite: 1].</li>
-                    <li><strong>Análisis de Correos (.mbox):</strong> Extracción de correos desde `Library/Mail` (`tracysumtwelve@imap.gmail.com`) e identificación de alias encubiertos (`coralbluetwo@hotmail.com`)[cite: 1].</li>
-                    <li><strong>Reconstrucción Temporal (Autopsy):</strong> Timeline entre el 6 y el 16 de julio de 2012, documentando el intento de borrado de archivos del día 9 de julio entre las 13:33 y las 13:43[cite: 1].</li>
+                    <li><strong>Recuperación en Papelera (.Trash):</strong> Se hallaron los archivos eliminados `Stamp insurance 1 2.pdf` y `Stamp insurance 1.pdf.zip`, con datos clave del seguro.</li>
+                    <li><strong>Esteganografía en Audio:</strong> En la carpeta `Downloads` se analizó el archivo `Crazydave1.mp3` (4.35 MB), descubriendo instrucciones encubiertas para instalar máquinas virtuales (VirtualBox).</li>
+                    <li><strong>Análisis de Correos (.mbox):</strong> Extracción de correos desde `Library/Mail` (`tracysumtwelve@imap.gmail.com`) e identificación de alias encubiertos (`coralbluetwo@hotmail.com`).</li>
+                    <li><strong>Reconstrucción Temporal (Autopsy):</strong> Timeline entre el 6 y el 16 de julio de 2012, documentando el intento de borrado de archivos del día 9 de julio entre las 13:33 y las 13:43.</li>
                 </ul>
             </div>
 
@@ -544,25 +573,25 @@
             </div>
 
             <div class="space-y-4 text-xs md:text-sm text-slate-300">
-                <p><strong>Descripción:</strong> Configuración e implementación perimetral para conectar la Sede Central y la Sucursal mediante enlace seguro simulando Internet (ISP)[cite: 2].</p>
+                <p><strong>Descripción:</strong> Configuración e implementación perimetral para conectar la Sede Central y la Sucursal mediante enlace seguro simulando Internet (ISP).</p>
 
                 <h4 class="font-bold text-slate-100 text-base border-b border-slate-800 pb-1 pt-2">Parámetros Criptográficos & Protocolos</h4>
                 <div class="grid md:grid-cols-2 gap-3 text-xs">
                     <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
                         <span class="text-cyan-400 font-bold block mb-1">VPN IPsec Site-to-Site</span>
-                        IKEv1 Fase 1 (PSK, Diffie-Hellman Group 2, Hash SHA, Cifrado AES)[cite: 2]. Fase 2 con ESP-AES y SHA-HMAC[cite: 2].
+                        IKEv1 Fase 1 (PSK, Diffie-Hellman Group 2, Hash SHA, Cifrado AES). Fase 2 con ESP-AES y SHA-HMAC.
                     </div>
                     <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
                         <span class="text-cyan-400 font-bold block mb-1">WebVPN SSL/TLS</span>
-                        Acceso seguro Clientless a través de puerto 443 para empleados remotos desde navegadores web[cite: 2].
+                        Acceso seguro Clientless a través de puerto 443 para empleados remotos desde navegadores web.
                     </div>
                 </div>
 
                 <h4 class="font-bold text-slate-100 text-base border-b border-slate-800 pb-1 pt-2">Resolución de Incidentes Prácticos</h4>
                 <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Conflicto NAT vs VPN:</strong> Solucionado configurando excepciones de NAT (`no-nat`) para evitar la traducción sobre el tráfico encriptado de las subredes[cite: 2].</li>
-                    <li><strong>Hardening SSH en Cisco ASA:</strong> Habilitación de administración por CLI utilizando el módulo `crypto key generate rsa modulus 1024` y restricción por IP[cite: 2].</li>
-                    <li><strong>Priorización QoS:</strong> Prioridad máxima al canal de administración SSH y tráfico WebVPN para prevenir latencias bajo saturación de red[cite: 2].</li>
+                    <li><strong>Conflicto NAT vs VPN:</strong> Solucionado configurando excepciones de NAT (`no-nat`) para evitar la traducción sobre el tráfico encriptado de las subredes.</li>
+                    <li><strong>Hardening SSH en Cisco ASA:</strong> Habilitación de administración por CLI utilizando el módulo `crypto key generate rsa modulus 1024` y restricción por IP.</li>
+                    <li><strong>Priorización QoS:</strong> Prioridad máxima al canal de administración SSH y tráfico WebVPN para prevenir latencias bajo saturación de red.</li>
                 </ul>
             </div>
 
@@ -584,21 +613,21 @@
             </div>
 
             <div class="space-y-4 text-xs md:text-sm text-slate-300">
-                <p><strong>Contexto:</strong> Diseño del SGSI para banca digital Cloud-Native bajo normativas RGPD, PSD2 y PCI-DSS[cite: 3].</p>
+                <p><strong>Contexto:</strong> Diseño del SGSI para banca digital Cloud-Native bajo normativas RGPD, PSD2 y PCI-DSS.</p>
 
                 <h4 class="font-bold text-slate-100 text-base border-b border-slate-800 pb-1 pt-2">Análisis de Riesgos (MAGERIT v3.0)</h4>
                 <div class="space-y-2">
                     <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex justify-between items-center">
                         <div>
                             <span class="text-red-400 font-bold block">Phishing a Empleados</span>
-                            <span class="text-[11px] text-slate-400">Riesgo Crítico (16) &rarr; Control 6.3 Formación + 5.17 MFA Estricto[cite: 3]</span>
+                            <span class="text-[11px] text-slate-400">Riesgo Crítico (16) &rarr; Control 6.3 Formación + 5.17 MFA Estricto</span>
                         </div>
                         <span class="px-2 py-1 bg-red-500/20 text-red-300 text-[10px] rounded border border-red-500/40">Mitigado</span>
                     </div>
                     <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800 flex justify-between items-center">
                         <div>
                             <span class="text-amber-400 font-bold block">Ransomware en BBDD</span>
-                            <span class="text-[11px] text-slate-400">Riesgo Alto (15) &rarr; Control 8.13 Backups Inmutables + Ciberseguro[cite: 3]</span>
+                            <span class="text-[11px] text-slate-400">Riesgo Alto (15) &rarr; Control 8.13 Backups Inmutables + Ciberseguro</span>
                         </div>
                         <span class="px-2 py-1 bg-amber-500/20 text-amber-300 text-[10px] rounded border border-amber-500/40">Transferido</span>
                     </div>
@@ -606,7 +635,7 @@
 
                 <h4 class="font-bold text-slate-100 text-base border-b border-slate-800 pb-1 pt-2">Modelo de Madurez (Análisis Kiviat)</h4>
                 <p>
-                    Optimización del modelo Cloud: transferencia de la seguridad física (Dominio A.11) al proveedor cloud (AWS/Azure) para potenciar la madurez en **Control de Acceso (A.9)** y **Seguridad Operativa (A.12)**[cite: 3].
+                    Optimización del modelo Cloud: transferencia de la seguridad física (Dominio A.11) al proveedor cloud (AWS/Azure) para potenciar la madurez en **Control de Acceso (A.9)** y **Seguridad Operativa (A.12)**.
                 </p>
             </div>
 
@@ -628,24 +657,24 @@
             </div>
 
             <div class="space-y-4 text-xs md:text-sm text-slate-300">
-                <p><strong>Metodología de Trabajo:</strong> Explotación de vulnerabilidades y resolución de máquinas virtuales orientadas al aprendizaje proactivo de técnicas ofensivas y defensivas[cite: 4].</p>
+                <p><strong>Metodología de Trabajo:</strong> Explotación de vulnerabilidades y resolución de máquinas virtuales orientadas al aprendizaje proactivo de técnicas ofensivas y defensivas.</p>
 
                 <h4 class="font-bold text-slate-100 text-base border-b border-slate-800 pb-1 pt-2">Herramientas & Protocolos Evaluados</h4>
                 <div class="grid md:grid-cols-2 gap-3 text-xs">
                     <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
                         <span class="text-cyan-400 font-bold block mb-1">Reconocimiento & Análisis Web</span>
-                        Escanear puertos y servicios con **Nmap**. Interceptación y modificación de peticiones HTTP/HTTPS con **Burp Suite** (básico)[cite: 4].
+                        Escanear puertos y servicios con **Nmap**. Interceptación y modificación de peticiones HTTP/HTTPS con **Burp Suite** (básico).
                     </div>
                     <div class="p-3 bg-slate-900/90 rounded-xl border border-slate-800">
                         <span class="text-cyan-400 font-bold block mb-1">Conectividad & Audición</span>
-                        Uso de **Hydra** para pruebas de fuerza bruta, **Netcat** para banner grabbing y shells, y **Wireshark** para inspección de tráfico[cite: 4].
+                        Uso de **Hydra** para pruebas de fuerza bruta, **Netcat** para banner grabbing y shells, y **Wireshark** para inspección de tráfico.
                     </div>
                 </div>
 
                 <h4 class="font-bold text-slate-100 text-base border-b border-slate-800 pb-1 pt-2">Bases de Datos & Entornos de Práctica</h4>
                 <ul class="list-disc pl-5 space-y-2">
-                    <li><strong>Bases de Datos:</strong> Prácticas con MySQL y Redis (nivel básico) para entender inyecciones e identificación de mala configuración[cite: 4].</li>
-                    <li><strong>Sistemas Operativos:</strong> Uso diario de distribuciones **Kali Linux** en entornos virtualizados aislados[cite: 4].</li>
+                    <li><strong>Bases de Datos:</strong> Prácticas con MySQL y Redis (nivel básico) para entender inyecciones e identificación de mala configuración.</li>
+                    <li><strong>Sistemas Operativos:</strong> Uso diario de distribuciones **Kali Linux** en entornos virtualizados aislados.</li>
                 </ul>
             </div>
 
@@ -662,9 +691,9 @@
             <p class="text-sm text-slate-400">Abierto a oportunidades laborales en Pentesting, Redes y Ciberseguridad.</p>
             
             <div class="flex flex-wrap justify-center gap-6 pt-2 text-xs font-mono text-slate-300">
-                <a href="mailto:adriancalderongarrido@gmail.com" class="hover:text-cyan-400 transition"><i class="fas fa-envelope text-cyan-400 mr-2"></i>adriancalderongarrido@gmail.com[cite: 4]</a>
+                <a href="mailto:adriancalderongarrido@gmail.com" class="hover:text-cyan-400 transition"><i class="fas fa-envelope text-cyan-400 mr-2"></i>adriancalderongarrido@gmail.com</a>
                 <a href="https://www.linkedin.com/in/adriancalderon-cyber/" target="_blank" class="hover:text-cyan-400 transition"><i class="fab fa-linkedin text-cyan-400 mr-2"></i>LinkedIn / adriancalderon-cyber</a>
-                <span><i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i>Getafe / Madrid[cite: 4]</span>
+                <span><i class="fas fa-map-marker-alt text-cyan-400 mr-2"></i>Getafe / Madrid</span>
             </div>
 
             <div class="flex justify-center gap-6 pt-4 text-2xl">
@@ -760,7 +789,7 @@
         }
         drawParticles();
 
-        // Tilt 3D para tarjetas
+        // Tilt 3D sutil para tarjetas normales
         const tiltCards = document.querySelectorAll('.tilt-card');
         tiltCards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -781,6 +810,28 @@
                 card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
             });
         });
+
+        // Tilt 3D ultrasuave para la sección "Sobre mí"
+        const subtleCard = document.querySelector('.tilt-subtle');
+        if (subtleCard) {
+            subtleCard.addEventListener('mousemove', (e) => {
+                const rect = subtleCard.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = (centerY - y) / 45; // Ángulo muy reducido
+                const rotateY = (x - centerX) / 45;
+
+                subtleCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.003, 1.003, 1.003)`;
+            });
+
+            subtleCard.addEventListener('mouseleave', () => {
+                subtleCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        }
 
         // Reveal Scroll Observer
         const reveals = document.querySelectorAll('.reveal');
